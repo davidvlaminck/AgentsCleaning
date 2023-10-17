@@ -9,7 +9,6 @@ from ORM.Base import Base
 class Agent(Base):
     __tablename__ = 'agents'
     id: Mapped[int] = mapped_column(primary_key=True)
-    ovo_code: Mapped[Optional[str]]
     naam: Mapped[str] = mapped_column()
     void: Mapped[Optional[str]] = mapped_column()
     alias: Mapped[Optional[str]] = mapped_column()
@@ -21,7 +20,7 @@ class Agent(Base):
 
 
 class Omgeving(Base):
-    __tablename__ = 'omgevingen'
+    tablename__ = 'omgevingen'
     id: Mapped[int] = mapped_column(primary_key=True)
     naam: Mapped[str] = mapped_column()
 
@@ -37,6 +36,7 @@ class AgentOmgeving(Base):
     agent_id = mapped_column(ForeignKey("agents.id"))
     omgeving_id = mapped_column(ForeignKey("omgevingen.id"))
     uuid: Mapped[str] = mapped_column()
+    ovo_code: Mapped[Optional[str]] = mapped_column()
 
     agent: Mapped[Agent] = relationship(back_populates="agent_omgevingen")
     omgeving: Mapped[Omgeving] = relationship(back_populates="agent_omgevingen")

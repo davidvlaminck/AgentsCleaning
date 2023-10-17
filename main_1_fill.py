@@ -14,7 +14,7 @@ from ORM.Base import Base
 
 if __name__ == '__main__':
     os.unlink('agents_all.db')
-    engine = create_engine('sqlite:///test.db', echo=True)
+    engine = create_engine('sqlite:///agents_all.db', echo=True)
 
     Base.metadata.create_all(engine)
 
@@ -53,8 +53,7 @@ if __name__ == '__main__':
             for a in importer.get_objects_from_oslo_search_endpoint_with_iterator(resource=ResourceEnum.agents):
                 print(a)
                 naam = a['purl:Agent.naam']
-                if naam == 'Provincie Oost-Vlaanderen':
-                    pass
+                ovo_code = a.get('tz:Agent.ovoCode', None)
                 name_count = len(session.query(Agent).filter(Agent.naam == naam).all())
                 if name_count == 0:
                     agent = Agent(naam=naam, void=a['tz:Agent.voId'])
@@ -68,7 +67,8 @@ if __name__ == '__main__':
                 if len(agent_omgeving) == 0:
                     uuid = a['@id'][39:75]
                     print(uuid)
-                    agent_omgeving = AgentOmgeving(agent_id=agent_in_db.id, omgeving_id=omgeving.id, uuid=uuid)
+                    agent_omgeving = AgentOmgeving(agent_id=agent_in_db.id, omgeving_id=omgeving.id, uuid=uuid,
+                                                   ovo_code=ovo_code)
                     session.add(agent_omgeving)
                     session.commit()
 
