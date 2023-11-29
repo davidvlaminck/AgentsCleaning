@@ -20,7 +20,7 @@ class Agent(Base):
 
 
 class Omgeving(Base):
-    tablename__ = 'omgevingen'
+    __tablename__ = 'omgevingen'
     id: Mapped[int] = mapped_column(primary_key=True)
     naam: Mapped[str] = mapped_column()
 

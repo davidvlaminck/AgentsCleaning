@@ -52,14 +52,14 @@ if __name__ == '__main__':
 
         ("AWV_EW_AN", "Afdeling Wegen en Verkeer Antwerpen", "OVO000548"),
         ("AWV_112_PUURS", "District Puurs", "OVO039695"),
-        ("AWV_114_GEEL", "District Geel", "OVO039698"),
-        ("AWV_121_ANTW", "District Antwerpen", "OVO039716"),
+        ("AWV_114_GEEL", "District Geel", "OVO039698"), # TODO
+        ("AWV_121_ANTW", "District Antwerpen", "OVO039716"), # TODO
         ("AWV_123_BRECHT", "District Brecht", "OVO029060"),
-        ("AWV_125_VOSSELAAR", "District Vosselaar", "OVO039727"),
+        ("AWV_125_VOSSELAAR", "District Vosselaar", "OVO039727"), # TODO
 
         ("AWV_EW_VB", "Afdeling Wegen en Verkeer Vlaams-Brabant", "OVO000551"),
         ("AWV_211_HALLE", "District Halle", "OVO036851"),
-        ("AWV_212_VILVOORDE", "District Vilvoorde", "OVO036849"),
+        ("AWV_212_VILVOORDE", "District Vilvoorde", "OVO036849"), # TODO
         ("AWV_213_LEUVEN", "District Leuven", "OVO036847"),
         ("AWV_214_AARSCHOT", "District Aarschot", "OVO036850"),
 
@@ -71,7 +71,7 @@ if __name__ == '__main__':
         ("AWV_316_PITTEM", "District Pittem", "OVO028761"),
 
         ("AWV_EW_OV", "Afdeling Wegen en Verkeer Oost-Vlaanderen", "OVO000550"),
-        ("AWV_411_GENT", "District Gent", "OVO039811"),
+        ("AWV_411_GENT", "District Gent", "OVO039811"), # TODO
         ("AWV_412_OUDENAARDE", "District Oudenaarde", "OVO039815"),
         ("AWV_413_EEKLO", "District Eeklo", None),
         ("AWV_414_SINT-NIKLAAS", "District Sint-Niklaas", "OVO039821"),
@@ -90,7 +90,7 @@ if __name__ == '__main__':
                 agent = session.query(Agent).filter(Agent.naam == name_change[0]).one()
                 agent.alias = agent.naam
                 agent.naam = name_change[1]
-                agent.ovo_code = name_change[2]
+                # agent.ovo_code = name_change[2]
             except NoResultFound:
                 pass
 
